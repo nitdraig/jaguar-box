@@ -1,88 +1,116 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  Input,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  Avatar,
-} from "@nextui-org/react";
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false); // Estado para controlar la visibilidad del menú de hamburguesa
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false); // Estado para controlar la visibilidad del menú de notificaciones
+  const [isProfileOpen, setIsProfileOpen] = useState(false); // Estado para controlar la visibilidad del menú de perfil
 
-export default function App() {
+  // Función para manejar la apertura y cierre del menú de hamburguesa
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Función para manejar la apertura y cierre del menú de notificaciones
+  const toggleNotificationsMenu = () => {
+    setIsNotificationsOpen(!isNotificationsOpen);
+  };
+
+  // Función para manejar la apertura y cierre del menú de perfil
+  const toggleProfileMenu = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
+
   return (
-    <Navbar isBordered>
-      <NavbarContent justify="start">
-        <NavbarBrand className="mr-4">
-          <p className="hidden sm:block font-bold text-inherit">ACME</p>
-        </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-3">
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Features
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="#" aria-current="page" color="secondary">
-              Customers
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Integrations
-            </Link>
-          </NavbarItem>
-        </NavbarContent>
-      </NavbarContent>
+    <nav className="bg-[#9f5095]/50 p-1 relative z-[1000]">
+      <div className="container mx-auto flex items-center justify-between">
+        {/* Menú de hamburguesa */}
+        <div
+          className="text-white text-xl font-bold cursor-pointer"
+          onClick={toggleMenu}
+        >
+          ☰
+        </div>
 
-      <NavbarContent as="div" className="items-center" justify="end">
-        <Input
-          classNames={{
-            base: "max-w-full sm:max-w-[10rem] h-10",
-            mainWrapper: "h-full",
-            input: "text-small",
-            inputWrapper:
-              "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-          }}
-          placeholder="Type to search..."
-          size="sm"
-          type="search"
-        />
-        <Dropdown placement="bottom-end">
-          <DropdownTrigger>
-            <Avatar
-              isBordered
-              as="button"
-              className="transition-transform"
-              color="secondary"
-              name="Jason Hughes"
-              size="sm"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+        {/* Logo en el centro */}
+        <div className="text-white text-xl font-bold flex justify-center items-center">
+          <a href="/">
+            <img
+              className="w-16"
+              src="https://res.cloudinary.com/dcu06etml/image/upload/v1696118047/jaguarbox/mwkqpqgvzx8wdwrhwu6f.png"
+              alt="Logo"
             />
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat">
-            <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
-            </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem key="logout" color="danger">
-              Log Out
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </NavbarContent>
-    </Navbar>
+          </a>
+        </div>
+
+        {/* Icono de notificaciones */}
+
+        {/* Icono de perfil */}
+        <div className="relative group">
+          <img
+            src="https://res.cloudinary.com/dcu06etml/image/upload/v1696118037/jaguarbox/mj2tqrfzuyhwnerfkdrc.jpg" // Reemplaza esto con la URL de tu imagen de perfil
+            alt="Profile"
+            className="w-10 h-10 rounded-full cursor-pointer"
+            onClick={toggleProfileMenu}
+          />
+          {/* Menú de perfil */}
+          {isProfileOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg">
+              <ul>
+                <li>
+                  <a
+                    href="/perfil"
+                    className="block px-4 py-2 hover:bg-gray-100"
+                  >
+                    Modificar Perfil
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/configuracion"
+                    className="block px-4 py-2 hover:bg-gray-100"
+                  >
+                    Configuración General
+                  </a>
+                </li>
+                {/* Agrega más elementos de menú según tus necesidades */}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+      {/* Menú de navegación */}
+      {isOpen && (
+        <ul className="flex flex-col mt-2 space-y-2">
+          <li>
+            <a href="/dashboard" className="text-white hover:text-gray-200">
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/about" className="text-white hover:text-gray-200">
+              About us
+            </a>
+          </li>
+          <li>
+            <a href="/faqs" className="text-white hover:text-gray-200">
+              FAQs
+            </a>
+          </li>
+          <li>
+            <a href="/investor" className="text-white hover:text-gray-200">
+              Investor
+            </a>
+          </li>
+          <li>
+            <a href="/blog" className="text-white hover:text-gray-200">
+              Blog
+            </a>
+          </li>
+        </ul>
+      )}
+    </nav>
   );
-}
+};
+
+export default Navbar;
