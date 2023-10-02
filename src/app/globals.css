@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @layer base {
+  :root {
+    --text: #000305;
+    --background: #fafdff;
+    --primary: #828df3;
+    --secondary: #c4a2f6;
+    --accent: #5512ba;
+  }
+  .dark {
+    --text: #fafdff;
+    --background: #000305;
+    --primary: #0c187d;
+    --secondary: #2b095d;
+    --accent: #8845ed;
+  }
+} */
+
 * {
   scroll-behavior: smooth;
 }

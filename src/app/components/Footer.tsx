@@ -2,11 +2,11 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-blue-100/80 font-sans ">
-      <div className="container px-6 py-12 mx-auto">
+    <footer className="bg-[#fafdff]/30 border font-sans ">
+      <div className="container px-6 pt-12 mx-auto">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
           <div className="sm:col-span-2">
-            <h3 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">
+            <h3 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl ">
               Subscribe our newsletter to get an update.
             </h3>
 
@@ -18,17 +18,13 @@ export const Footer = () => {
                 placeholder="Email Address"
               />
 
-              <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+              <button className="w-full bg-[#5512BA] px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none  rounded-lg hover:bg-[#5512BA]/60 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
                 Subscribe
               </button>
             </div>
           </div>
 
           <div>
-            <p className="font-semibold text-gray-800 dark:text-white">
-              Quick Link
-            </p>
-
             <div className="flex flex-col items-start mt-5 space-y-2">
               <p className="text-gray-600 transition-colors duration-300   hover:underline hover:cursor-pointer hover:text-blue-500">
                 Home
@@ -43,25 +39,21 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className="font-semibold text-gray-800 dark:text-white">
-              Industries
-            </p>
-
             <div className="flex flex-col items-start mt-5 space-y-2">
               <p className="text-gray-600 transition-colors duration-300   hover:underline hover:cursor-pointer hover:text-blue-500">
                 Retail & E-Commerce
               </p>
               <p className="text-gray-600 transition-colors duration-300   hover:underline hover:cursor-pointer hover:text-blue-500">
-                Information Technology
+                Legal Information
               </p>
               <p className="text-gray-600 transition-colors duration-300   hover:underline hover:cursor-pointer hover:text-blue-500">
-                Finance & Insurance
+                Our
               </p>
             </div>
           </div>
         </div>
 
-        <hr className="my-6 border-gray-200 md:my-8 dark:border-gray-700 h-2" />
+        <hr className="my-6 border-gray-200 md:my-8  h-2" />
 
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="flex flex-1 gap-4 hover:cursor-pointer">
@@ -98,36 +90,17 @@ export const Footer = () => {
               height="30"
               alt="inst"
             />
-            <img
-              src="https://www.svgrepo.com/show/94698/github.svg"
-              className=""
-              width="30"
-              height="30"
-              alt="gt"
-            />
-            <img
-              src="https://www.svgrepo.com/show/22037/path.svg"
-              width="30"
-              height="30"
-              alt="pn"
-            />
+
             <img
               src="https://www.svgrepo.com/show/28145/linkedin.svg"
               width="30"
               height="30"
               alt="in"
             />
-            <img
-              src="https://www.svgrepo.com/show/22048/dribbble.svg"
-              className=""
-              width="30"
-              height="30"
-              alt="db"
-            />
           </div>
         </div>
         <p className="font-sans p-8 text-start md:text-center md:text-lg md:p-4">
-          © 2023 You Company Inc. All rights reserved.
+          © 2023 JaguarBox All rights reserved.
         </p>
       </div>
     </footer>

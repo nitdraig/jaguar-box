@@ -1,116 +1,124 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // Estado para controlar la visibilidad del menú de hamburguesa
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false); // Estado para controlar la visibilidad del menú de notificaciones
-  const [isProfileOpen, setIsProfileOpen] = useState(false); // Estado para controlar la visibilidad del menú de perfil
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Link,
+  Button,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+} from "@nextui-org/react";
 
-  // Función para manejar la apertura y cierre del menú de hamburguesa
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  // Función para manejar la apertura y cierre del menú de notificaciones
-  const toggleNotificationsMenu = () => {
-    setIsNotificationsOpen(!isNotificationsOpen);
-  };
-
-  // Función para manejar la apertura y cierre del menú de perfil
-  const toggleProfileMenu = () => {
-    setIsProfileOpen(!isProfileOpen);
-  };
+  const menuItems = [
+    { name: "Home", linkNav: "/#" },
+    { name: "About us", linkNav: "/#about" },
+    { name: "Why JBX?", linkNav: "/#why" },
+    { name: "Q&A", linkNav: "/#q&a" },
+    { name: "Pricing", linkNav: "/#price" },
+  ];
 
   return (
-    <nav className="bg-[#9f5095]/50 p-1 relative z-[1000]">
-      <div className="container mx-auto flex items-center justify-between">
-        {/* Menú de hamburguesa */}
-        <div
-          className="text-white text-xl font-bold cursor-pointer"
-          onClick={toggleMenu}
-        >
-          ☰
-        </div>
+    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+      <NavbarContent className="sm:hidden" justify="start">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        />
+      </NavbarContent>
 
-        {/* Logo en el centro */}
-        <div className="text-white text-xl font-bold flex justify-center items-center">
-          <a href="/">
+      <NavbarContent className="sm:hidden pr-3" justify="center">
+        <NavbarBrand>
+          <a href="/#">
+            {" "}
             <img
-              className="w-16"
+              fill="none"
+              height="36"
+              viewBox="0 0 32 32"
+              width="36"
               src="https://res.cloudinary.com/dcu06etml/image/upload/v1696118047/jaguarbox/mwkqpqgvzx8wdwrhwu6f.png"
-              alt="Logo"
             />
           </a>
-        </div>
+          <p className="font-bold text-inherit">JBx</p>
+        </NavbarBrand>
+      </NavbarContent>
 
-        {/* Icono de notificaciones */}
-
-        {/* Icono de perfil */}
-        <div className="relative group">
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarBrand>
           <img
-            src="https://res.cloudinary.com/dcu06etml/image/upload/v1696118037/jaguarbox/mj2tqrfzuyhwnerfkdrc.jpg" // Reemplaza esto con la URL de tu imagen de perfil
-            alt="Profile"
-            className="w-10 h-10 rounded-full cursor-pointer"
-            onClick={toggleProfileMenu}
+            fill="none"
+            height="36"
+            viewBox="0 0 32 32"
+            width="36"
+            src="https://res.cloudinary.com/dcu06etml/image/upload/v1696118047/jaguarbox/mwkqpqgvzx8wdwrhwu6f.png"
           />
-          {/* Menú de perfil */}
-          {isProfileOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg">
-              <ul>
-                <li>
-                  <a
-                    href="/perfil"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Modificar Perfil
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/configuracion"
-                    className="block px-4 py-2 hover:bg-gray-100"
-                  >
-                    Configuración General
-                  </a>
-                </li>
-                {/* Agrega más elementos de menú según tus necesidades */}
-              </ul>
-            </div>
-          )}
-        </div>
-      </div>
-      {/* Menú de navegación */}
-      {isOpen && (
-        <ul className="flex flex-col mt-2 space-y-2">
-          <li>
-            <a href="/dashboard" className="text-white hover:text-gray-200">
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="/about" className="text-white hover:text-gray-200">
-              About us
-            </a>
-          </li>
-          <li>
-            <a href="/faqs" className="text-white hover:text-gray-200">
-              FAQs
-            </a>
-          </li>
-          <li>
-            <a href="/investor" className="text-white hover:text-gray-200">
-              Investor
-            </a>
-          </li>
-          <li>
-            <a href="/blog" className="text-white hover:text-gray-200">
-              Blog
-            </a>
-          </li>
-        </ul>
-      )}
-    </nav>
-  );
-};
 
-export default Navbar;
+          <p className="font-bold text-inherit">JBx</p>
+        </NavbarBrand>
+        <NavbarItem>
+          <a color="foreground" href="/#">
+            Home
+          </a>
+        </NavbarItem>
+        <NavbarItem>
+          <a color="foreground" href="/#about">
+            About us
+          </a>
+        </NavbarItem>
+        <NavbarItem isActive>
+          <a href="/#why" aria-current="page">
+            Why JBX?
+          </a>
+        </NavbarItem>
+
+        <NavbarItem>
+          <a color="foreground" href="/#q&a">
+            Q&A
+          </a>
+        </NavbarItem>
+        <NavbarItem>
+          <a color="foreground" href="/#price">
+            Pricing
+          </a>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Link href="/login">Login</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Button as={Link} color="warning" href="/register" variant="flat">
+            Sign Up
+          </Button>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <a
+              className="w-full"
+              color={
+                index === 2
+                  ? "warning"
+                  : index === menuItems.length - 1
+                  ? "danger"
+                  : "foreground"
+              }
+              href={item.linkNav}
+              size="lg"
+            >
+              {item.name}
+            </a>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+    </Navbar>
+  );
+}
